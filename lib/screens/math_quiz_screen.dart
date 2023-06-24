@@ -4,6 +4,7 @@ import 'dart:math';
 import '../main.dart';
 import 'history_screen.dart';
 import 'settings_screen.dart';
+import 'result_screen.dart';
 
 class MathQuizScreen extends StatefulWidget {
   final int level;
@@ -139,9 +140,13 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
   }
 
   void endQuiz() {
-    timer!.cancel();
-    Navigator.pop(context);
+    timer?.cancel();
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ResultScreen(score: score, maxQuestions: maxQuestions)),
+    );
   }
+
 
   void navigateToScreen(int index) {
     setState(() {
